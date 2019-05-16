@@ -30,15 +30,6 @@ export function ListScreen() {
                     <ListGroup>
                         <TasksList />
                     </ListGroup>
-                    <Button onClick={() => onAddButtonClick({
-                        id: new Date().valueOf(),
-                        title: 'Title',
-                        summary: `Looooooooooong summaryyyyyyyyyyyyyyyyyyyyyyyyy. Looooooooooong summaryyyyyyyyyyyyyyyyyyyyyyyyy. That's all`,
-                        dueTime: '12h',
-                        created: '12.05.2019 12:45',
-                        lastUpdate: '12.05.2019 12:45',
-                        email: 'mironov.bam@gmail.com'
-                    })}>Add</Button>
                 </Col>
             </Row>
         </Container>
