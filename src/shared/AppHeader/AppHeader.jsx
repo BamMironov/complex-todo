@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import {
     Nav,
     NavbarBrand,
@@ -19,12 +20,15 @@ export function AppHeader() {
         return (
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
-                    <NavItem>
-                        <NavLink href="#" className='text-white'>List</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="#" className='text-white'>Create</NavLink>
-                    </NavItem>
+                    {
+                        routes.map(route => {
+                            return (
+                                <NavItem key={route.id}>
+                                    <NavLink tag={RRNavLink} to={route.url} className='text-white'>{route.name}</NavLink>
+                                </NavItem>
+                            )
+                        })
+                    }
                 </Nav>
             </Collapse>
         )
@@ -42,3 +46,16 @@ export function AppHeader() {
 }
 
 const githubLink = 'https://github.com/BamMironov/complex-todo';
+
+const routes = [
+    {
+        name: 'Tasks',
+        url: '/tasks',
+        id: 1
+    },
+    {
+        name: 'Create',
+        url: '/create',
+        id: 2
+    }
+];

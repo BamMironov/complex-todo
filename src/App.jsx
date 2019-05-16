@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React from 'react';
 import { ListScreen } from './screens';
 import { AppHeader } from './shared';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { StateProvider } from "./store";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
 function App() {
   return (
-    <Fragment>
-      <AppHeader />
-      <ListScreen />
-    </Fragment>
+    <StateProvider>
+      <Router>
+        <AppHeader />
+        <Route path='/tasks' component={ListScreen} />
+      </Router>
+    </StateProvider>
   );
 }
 
