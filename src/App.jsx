@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListScreen } from './screens';
+import { ListScreen, CreateScreen } from './screens';
 import { AppHeader } from './shared';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { StateProvider } from "./store";
@@ -13,6 +13,7 @@ function App() {
       <Router>
         <AppHeader />
         <Route path='/tasks' component={ListScreen} />
+        <Route path='/create' component={CreateScreen} />
       </Router>
     </StateProvider>
   );
