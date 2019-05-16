@@ -1,2 +1,2 @@
 export * from './Item/Item';
-export * from './ItemList/ItemList'
+export * from './StatusBadge/StatusBadge';
