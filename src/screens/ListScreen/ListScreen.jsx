@@ -16,12 +16,17 @@ export function ListScreen() {
                 <Item data={item} key={item.id} onRemove={() => onRemoveTask(item.id)} />
             )
         })
-    } 
+    }
+
+    function MainTitle() {
+        return <h1>Task List</h1>;
+    }
 
     return (
         <Container>
             <Row className='justify-content-center'>
-                <Col md='6'>
+                <Col md='6'>  
+                    <MainTitle />         
                     <ListGroup>
                         <TasksList />
                     </ListGroup>
