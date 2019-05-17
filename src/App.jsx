@@ -12,7 +12,7 @@ function App() {
     <StateProvider>
       <Router>
         <AppHeader />
-        <Route path={['/', '/tasks']} component={ListScreen} />
+        <Route path='/tasks' component={ListScreen} />
         <Route path='/create' component={CreateScreen} />
       </Router>
     </StateProvider>
