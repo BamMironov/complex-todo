@@ -37,15 +37,13 @@ export function AppHeader() {
     return (
         <Navbar color="dark" light expand="md">
             <Container>
-                <NavbarBrand href={githubLink} target='_blank' className='text-white'>Complex TODO</NavbarBrand>
+                <NavbarBrand tag={RRNavLink} to='/' className='text-white'>Complex TODO</NavbarBrand>
                 <NavbarToggler onClick={toggle} className='navbar-dark' />
                 <CollapsedMenu />
             </Container>
         </Navbar>
     );
 }
-
-const githubLink = 'https://github.com/BamMironov/complex-todo';
 
 const routes = [
     {

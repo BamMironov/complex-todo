@@ -1,7 +1,7 @@
 import React from 'react';
-import { ListScreen, CreateScreen } from './screens';
+import { ListScreen, CreateScreen, MainScreen } from './screens';
 import { AppHeader } from './shared';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { StateProvider } from "./store";
 import { FormTypes } from './enums';
 
@@ -14,9 +14,12 @@ function App() {
     <StateProvider>
       <Router>
         <AppHeader />
-        <Route path='/tasks' component={ListScreen} />
-        <Route path='/create' render={props => <CreateScreen {...props} type={FormTypes.New} />} />
-        <Route path='/edit' render={props => <CreateScreen {...props} type={FormTypes.Edit} />} />
+        <Switch>
+          <Route exact path='/' component={MainScreen} />
+          <Route path='/tasks' component={ListScreen} />
+          <Route path='/create' render={props => <CreateScreen {...props} type={FormTypes.New} />} />
+          <Route path='/edit' render={props => <CreateScreen {...props} type={FormTypes.Edit} />} />
+        </Switch>
       </Router>
     </StateProvider>
   );
