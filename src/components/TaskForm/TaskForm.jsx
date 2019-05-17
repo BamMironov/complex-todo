@@ -8,16 +8,17 @@ export function FormTask(props) {
     const [title, setTitle] = useInput();
     const [summary, setSummary] = useInput();
     const [email, setEmail] = useInput();
+    const [status, setStatus] = useInput(Statuses.Open);
 
     function save(e) {
         e.preventDefault();
-        
+
         props.onSave({
             id: new Date().valueOf(),
             title,
             summary,
             email,
-            status: Statuses.Open, 
+            status,
             // to be fixed
             dueDate: '12h',
             created: '12.05.2019 12:45',
@@ -48,6 +49,19 @@ export function FormTask(props) {
             <FormGroup>
                 <Label for="email">Email</Label>
                 <Input value={email} type="email" name="email" id="email" placeholder="Type an email" onChange={setEmail} />
+            </FormGroup>
+
+            <FormGroup>
+                <Label for="status">Select</Label>
+                <Input value={status} type="select" name="status" id="status" onChange={setStatus}>
+                    {
+                        Object.values(Statuses).map(status => {
+                            return (
+                                <option key={status}>{status}</option>
+                            )
+                        })
+                    }
+                </Input>
             </FormGroup>
 
             <Button color='primary' type='submit'>Create</Button>
