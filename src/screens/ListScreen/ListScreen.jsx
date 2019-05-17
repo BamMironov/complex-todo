@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
-import { Container, Row, Col, ListGroup, Button } from 'reactstrap';
+import { Container, Row, Col, ListGroup } from 'reactstrap';
 import { Item } from '../../components';
-import { addTask, removeTask, TodoContext } from '../../store';
+import { removeTask, TodoContext } from '../../store';
 import './ListScreen.scss';
 
 export function ListScreen() {
     const { state, dispatch } = useContext(TodoContext);
-
-    const onAddButtonClick = task => dispatch(addTask(task));
     const onRemoveTask = id => dispatch(removeTask(id));
 
     function TasksList() {
