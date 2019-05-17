@@ -20,7 +20,7 @@ export function Item({ data, onRemove }) {
         return (
             <Collapse className='ct-item__collapse' isOpen={isOpen}>
                 <CardText>
-                    <span className='ct-item__title'>Due time:</span> {data.dueTime}
+                    <span className='ct-item__title'>Due time:</span> {data.dueDate}
                 </CardText>
                 <CardText>
                     <span className='ct-item__title'>Created:</span> {data.created}

@@ -17,7 +17,7 @@ export function FormTask(props) {
             summary,
             email,
             // to be fixed
-            dueTime: '12h',
+            dueDate: '12h',
             created: '12.05.2019 12:45',
             lastUpdate: '12.05.2019 12:45'
         });
