@@ -10,7 +10,7 @@ export function FormTask(props) {
     const [summary, setSummary] = useInput();
     const [email, setEmail] = useInput();
     const [status, setStatus] = useInput(Statuses.Open);
-    const [dueDate, setDueDate] = useState();
+    const [dueDate, setDueDate] = useState(new Date());
 
     function save(e) {
         e.preventDefault();
@@ -25,14 +25,6 @@ export function FormTask(props) {
             created: new Date(),
             lastUpdate: new Date()
         });
-
-        reset();
-    }
-
-    function reset() {
-        setTitle();
-        setSummary();
-        setEmail();
     }
 
     return (
