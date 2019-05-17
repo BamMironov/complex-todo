@@ -7,9 +7,7 @@ export function NewForm(props) {
         created: new Date()
     });
 
-    const buttonName = 'Create';
-
     return (
-        <TaskForm {...props} getTaskProperties={getTaskProperties} buttonName={buttonName} />
+        <TaskForm {...props} getTaskProperties={getTaskProperties} buttonName='Create' />
     );
 }
