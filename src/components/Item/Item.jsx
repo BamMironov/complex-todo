@@ -9,7 +9,6 @@ import {
     Collapse
 } from 'reactstrap';
 import { StatusBadge } from '../';
-import { Statuses } from '../../enums';
 import './Item.scss';
 
 export function Item({ data, onRemove }) {
@@ -40,7 +39,7 @@ export function Item({ data, onRemove }) {
             <Card className='ct-item'>
                 <CardBody>
                     <CardTitle className='ct-item__title'>
-                        {data.title} <StatusBadge type={Statuses.InProgress}></StatusBadge>
+                        {data.title} <StatusBadge type={data.status}></StatusBadge>
                         <Button close onClick={onRemove} />
                     </CardTitle>
                     <div className='ct-item__title'>Summary:</div>
@@ -48,7 +47,7 @@ export function Item({ data, onRemove }) {
                     <CollapsedContent />
                     
                     <div className='d-flex justify-content-between'>
-                        <Button size='sm' onClick={toggle}>Expand</Button>
+                        <Button size='sm' onClick={toggle}>{isOpen ? 'Hide' : 'Expand'}</Button>
                         <Button color='link' size='sm'>Edit</Button>
                     </div>
                 </CardBody>

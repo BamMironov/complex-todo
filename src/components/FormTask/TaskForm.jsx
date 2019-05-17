@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useInput } from '../../hooks/useInput';
+import { Statuses } from '../../enums';
 import './TaskForm.scss'
 
 export function FormTask(props) {
@@ -16,6 +17,7 @@ export function FormTask(props) {
             title,
             summary,
             email,
+            status: Statuses.Open, 
             // to be fixed
             dueDate: '12h',
             created: '12.05.2019 12:45',
