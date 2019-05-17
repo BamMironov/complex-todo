@@ -9,6 +9,7 @@ import {
     Collapse
 } from 'reactstrap';
 import { StatusBadge } from '../';
+import { formatDate } from '../../utils';
 import './Item.scss';
 
 export function Item({ data, onRemove }) {
@@ -19,13 +20,13 @@ export function Item({ data, onRemove }) {
         return (
             <Collapse className='ct-item__collapse' isOpen={isOpen}>
                 <CardText>
-                    <span className='ct-item__title'>Due time:</span> {data.dueDate}
+                    <span className='ct-item__title'>Due time:</span> {formatDate(data.dueDate)}
                 </CardText>
                 <CardText>
-                    <span className='ct-item__title'>Created:</span> {data.created}
+                    <span className='ct-item__title'>Created:</span> {formatDate(data.created)}
                 </CardText>
                 <CardText>
-                    <span className='ct-item__title'>Last update:</span> {data.lastUpdate}
+                    <span className='ct-item__title'>Last update:</span> {formatDate(data.lastUpdate)}
                 </CardText>
                 <CardText>
                     <span className='ct-item__title'>Email:</span> {data.email}

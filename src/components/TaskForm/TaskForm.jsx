@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useInput } from '../../hooks/useInput';
 import { Statuses } from '../../enums';
+import DatePicker from 'react-datepicker';
 import './TaskForm.scss'
 
 export function FormTask(props) {
@@ -9,6 +10,7 @@ export function FormTask(props) {
     const [summary, setSummary] = useInput();
     const [email, setEmail] = useInput();
     const [status, setStatus] = useInput(Statuses.Open);
+    const [dueDate, setDueDate] = useState();
 
     function save(e) {
         e.preventDefault();
@@ -19,10 +21,9 @@ export function FormTask(props) {
             summary,
             email,
             status,
-            // to be fixed
-            dueDate: '12h',
-            created: '12.05.2019 12:45',
-            lastUpdate: '12.05.2019 12:45'
+            dueDate,
+            created: new Date(),
+            lastUpdate: new Date()
         });
 
         reset();
@@ -44,6 +45,11 @@ export function FormTask(props) {
             <FormGroup>
                 <Label for="summary">Summary</Label>
                 <Input value={summary} type="text" name="summary" id="summary" placeholder="Type a summary" onChange={setSummary} />
+            </FormGroup>
+
+            <FormGroup>
+                <Label>Due Date</Label>
+                <DatePicker selected={dueDate}  onChange={date => setDueDate(date)} showTimeSelect />
             </FormGroup>
 
             <FormGroup>
