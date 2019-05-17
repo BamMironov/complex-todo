@@ -1,7 +1,12 @@
-import { ADD_TASK, REMOVE_TASK } from './constants';
+import { ADD_TASK, EDIT_TASK, REMOVE_TASK } from './constants';
 
 export const addTask = task => ({
     type: ADD_TASK,
+    task
+});
+
+export const editTask = task => ({
+    type: EDIT_TASK,
     task
 });
 

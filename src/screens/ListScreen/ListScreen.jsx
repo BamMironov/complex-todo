@@ -5,9 +5,16 @@ import { removeTask, TodoContext } from '../../store';
 import { NavLink } from 'react-router-dom';
 import './ListScreen.scss';
 
-export function ListScreen() {
+export function ListScreen({ history }) {
     const { state, dispatch } = useContext(TodoContext);
     const onRemoveTask = id => dispatch(removeTask(id));
+
+    const onEditTask = task => {
+        history.push({
+            pathname: '/edit',
+            state: task
+        });
+    }
 
     function TasksList() {
         return (
@@ -15,7 +22,7 @@ export function ListScreen() {
                 {
                     state.tasks.map(item => {
                         return (
-                            <Item data={item} key={item.id} onRemove={() => onRemoveTask(item.id)} />
+                            <Item data={item} key={item.id} remove={() => onRemoveTask(item.id)} edit={() => onEditTask(item)} />
                         )
                     })
                 }

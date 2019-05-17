@@ -5,25 +5,30 @@ import { Statuses } from '../../enums';
 import DatePicker from 'react-datepicker';
 import './TaskForm.scss'
 
-export function FormTask(props) {
-    const [title, setTitle] = useInput();
-    const [summary, setSummary] = useInput();
-    const [email, setEmail] = useInput();
-    const [status, setStatus] = useInput(Statuses.Open);
-    const [dueDate, setDueDate] = useState(new Date());
+export function TaskForm(props) {
+    const data = props.item || {};
+    const [title, setTitle] = useInput(data.title);
+    const [summary, setSummary] = useInput(data.summary);
+    const [email, setEmail] = useInput(data.email);
+    const [status, setStatus] = useInput(data.status || Statuses.Open);
+    const [dueDate, setDueDate] = useState(data.dueDate || new Date());
 
     function save(e) {
         e.preventDefault();
 
-        props.onSave({
-            id: new Date().valueOf(),
+        const newTask = {
             title,
             summary,
             email,
             status,
             dueDate,
-            created: new Date(),
             lastUpdate: new Date()
+        };
+
+        props.onSave({
+            ...data,
+            ...newTask,
+            ...props.getTaskProperties()
         });
     }
 
@@ -62,7 +67,7 @@ export function FormTask(props) {
                 </Input>
             </FormGroup>
 
-            <Button color='primary' type='submit'>Create</Button>
+            <Button color='primary' type='submit'>{props.buttonName}</Button>
         </Form>
     );
 }

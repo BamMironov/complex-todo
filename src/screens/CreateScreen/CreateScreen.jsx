@@ -1,17 +1,24 @@
 import React, { useContext } from 'react';
-import { TodoContext, addTask } from '../../store';
+import { TodoContext, addTask, editTask } from '../../store';
 import { Container, Row, Col } from 'reactstrap';
-import { FormTask } from '../../components';
+import { NewForm, EditForm } from '../../components';
+import { FormTypes } from '../../enums';
 
-export function CreateScreen({ history }) {
+export function CreateScreen(props) {
     const { dispatch } = useContext(TodoContext);
-    const onSaveTask = task => {
-        dispatch(addTask(task));
-        history.push('/tasks');
-    };
+
+    const toTaskList = () => props.history.push('/tasks');
+
+    const saveTask = (task, action) => {
+        dispatch(action(task));
+        toTaskList();
+    }
+
+    const onSaveTask = task => saveTask(task, addTask);
+    const onEditTask = task => saveTask(task, editTask);
 
     function MainTitle() {
-        return <h1>Create a task</h1>;
+        return <h1>{props.type} a task</h1>;
     }
 
     return (
@@ -19,7 +26,11 @@ export function CreateScreen({ history }) {
             <Row className='justify-content-center'>
                 <Col md='6'>
                     <MainTitle />
-                    <FormTask className='ct-form' onSave={onSaveTask} />
+                    {
+                        props.type === FormTypes.New ? 
+                        <NewForm onSave={onSaveTask} /> :
+                        <EditForm onSave={onEditTask} item={props.location.state} />
+                    }
                 </Col>
             </Row>
         </Container>
