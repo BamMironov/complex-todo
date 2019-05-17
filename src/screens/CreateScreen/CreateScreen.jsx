@@ -3,9 +3,12 @@ import { TodoContext, addTask } from '../../store';
 import { Container, Row, Col } from 'reactstrap';
 import { FormTask } from '../../components';
 
-export function CreateScreen() {
+export function CreateScreen({ history }) {
     const { dispatch } = useContext(TodoContext);
-    const onSaveTask = task => dispatch(addTask(task));
+    const onSaveTask = task => {
+        dispatch(addTask(task));
+        history.push('/tasks');
+    };
 
     function MainTitle() {
         return <h1>Create a task</h1>;
