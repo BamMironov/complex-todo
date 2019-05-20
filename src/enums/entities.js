@@ -1,3 +1,3 @@
 export const Entities = {
-    Tasks: 'todo-tasks'    
+    Tasks: 'todo-tasks'
 };

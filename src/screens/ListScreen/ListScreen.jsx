@@ -53,8 +53,8 @@ export function ListScreen({ history }) {
     return (
         <Container>
             <Row className='justify-content-center'>
-                <Col md='6'>  
-                    <MainTitle />         
+                <Col md='6'>
+                    <MainTitle />
                     {
                         state.tasks.length ? <TasksList /> : <Fallback />
                     }

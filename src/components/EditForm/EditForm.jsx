@@ -7,7 +7,7 @@ export function EditForm(props) {
         lastUpdate: new Date()
     });
 
-    return props.item ? 
+    return props.item ?
         <TaskForm {...props} getTaskProperties={getTaskProperties} buttonName='Edit' /> :
-        <Redirect to='/tasks' /> 
+        <Redirect to='/tasks' />
 }

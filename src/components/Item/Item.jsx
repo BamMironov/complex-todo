@@ -34,7 +34,7 @@ export function Item({ data, remove, edit }) {
             </Collapse>
         );
     }
-    
+
     return (
         <ListGroupItem>
             <Card className='ct-item'>
@@ -46,7 +46,7 @@ export function Item({ data, remove, edit }) {
                     <div className='ct-item__title'>Summary:</div>
                     <CardText className='text-break'>{data.summary}</CardText>
                     <CollapsedContent />
-                    
+
                     <div className='d-flex justify-content-between'>
                         <Button size='sm' onClick={toggle}>{isOpen ? 'Hide' : 'Expand'}</Button>
                         <Button color='link' size='sm' onClick={edit}>Edit</Button>

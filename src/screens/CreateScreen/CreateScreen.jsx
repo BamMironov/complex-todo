@@ -38,7 +38,7 @@ export function CreateScreen(props) {
                 <Col md='6'>
                     <MainTitle />
                     {
-                        props.type === FormTypes.New ? 
+                        props.type === FormTypes.New ?
                         <NewForm onSave={onSaveTask} /> :
                         <EditForm onSave={onEditTask} item={props.location.state} />
                     }
