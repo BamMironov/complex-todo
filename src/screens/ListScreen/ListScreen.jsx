@@ -3,11 +3,18 @@ import { Container, Row, Col, ListGroup } from 'reactstrap';
 import { Item } from '../../components';
 import { removeTask, TodoContext } from '../../store';
 import { NavLink } from 'react-router-dom';
+import { tasksService } from '../../services';
+
 import './ListScreen.scss';
 
 export function ListScreen({ history }) {
     const { state, dispatch } = useContext(TodoContext);
-    const onRemoveTask = id => dispatch(removeTask(id));
+    const onRemoveTask = id => {
+        const tasks = state.tasks.filter(task => task.id !== id);
+
+        dispatch(removeTask(id));
+        tasksService.setTasks(tasks);
+    };
 
     const onEditTask = task => {
         history.push({
