@@ -3,7 +3,7 @@ import { Entities } from '../enums';
 
 export class TasksService extends ApiService {
     getTasks() {
-        this.getRequest(Entities.Tasks);
+        return this.getRequest(Entities.Tasks);
     }
 
     setTasks(tasks) {

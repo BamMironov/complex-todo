@@ -1,4 +1,8 @@
 export default class ApiService {
+    stringify(payload) {
+        return JSON.stringify(payload);
+    }
+
     parse(request) {
         return request ? JSON.parse(request) : null;
     }
@@ -8,6 +12,6 @@ export default class ApiService {
     }
 
     setRequest(entyty, payload) {
-        localStorage.setItem(entyty, payload);
+        localStorage.setItem(entyty, this.stringify(payload));
     }
 }

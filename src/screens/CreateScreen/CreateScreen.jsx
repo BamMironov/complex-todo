@@ -3,9 +3,10 @@ import { TodoContext, addTask, editTask } from '../../store';
 import { Container, Row, Col } from 'reactstrap';
 import { NewForm, EditForm } from '../../components';
 import { FormTypes } from '../../enums';
+import { tasksService } from '../../services';
 
 export function CreateScreen(props) {
-    const { dispatch } = useContext(TodoContext);
+    const { state, dispatch } = useContext(TodoContext);
 
     const toTaskList = () => props.history.push('/tasks');
 
@@ -14,8 +15,18 @@ export function CreateScreen(props) {
         toTaskList();
     }
 
-    const onSaveTask = task => saveTask(task, addTask);
-    const onEditTask = task => saveTask(task, editTask);
+    const onSaveTask = task => {
+        const tasks = [...state.tasks, task]
+
+        saveTask(task, addTask);
+        tasksService.setTasks(tasks);
+    };
+    const onEditTask = task => {
+        const tasks = state.tasks.map(t => t.id === task.id ? task : t);
+
+        saveTask(task, editTask);
+        tasksService.setTasks(tasks);
+    };
 
     function MainTitle() {
         return <h1>{props.type} a task</h1>;

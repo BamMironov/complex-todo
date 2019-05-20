@@ -18,7 +18,7 @@ export function reducer(state, action) {
             return {
                 tasks: state.tasks.filter(task => task.id !== action.id)
             }
-    
+
         default:
             return state;
     }
