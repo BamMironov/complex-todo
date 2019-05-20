@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { reducer } from './reducer';
-import { apiService } from '../services';
+import { tasksService } from '../services';
 
 export const TodoContext = createContext({
-    tasks: apiService.getTasks() || []
+    tasks: tasksService.getTasks() || []
 });
 
 export function StateProvider({ children }) {

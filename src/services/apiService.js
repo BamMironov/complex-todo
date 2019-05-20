@@ -1,4 +1,4 @@
-class ApiService {
+export default class ApiService {
     parse(request) {
         return request ? JSON.parse(request) : null;
     }
@@ -10,10 +10,4 @@ class ApiService {
     setRequest(entyty, payload) {
         localStorage.setItem(entyty, payload);
     }
-
-    getTasks() {
-        this.getRequest('todo-tasks');
-    }
 }
-
-export const apiService = new ApiService();
