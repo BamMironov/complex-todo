@@ -4,6 +4,8 @@ import { useForm } from '../../hooks/useForm';
 import { Statuses } from '../../enums';
 import DatePicker from 'react-datepicker';
 import { validate } from './formValidation';
+import * as moment from 'moment';
+
 import './TaskForm.scss'
 
 export function TaskForm(props) {
@@ -17,7 +19,7 @@ export function TaskForm(props) {
     }
 
     const { values, errors, handleChange, handleSublmit } = useForm(save, validate, initialValues);
-    const [dueDate, setDueDate] = useState(data.dueDate || new Date());
+    const [dueDate, setDueDate] = useState(moment(data.dueDate).toDate() || new Date());
 
     function save() {
         const { title, summary, email, status } = values;
